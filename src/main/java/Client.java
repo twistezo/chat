@@ -1,56 +1,47 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
+import javax.swing.*;
+import java.io.*;
 import java.net.Socket;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-public class Server {
+public class Client {
 	private int					port	=	5000;
-	private	ServerSocket		server	=	null;
 	private	Socket				socket	=	null;
 	private	BufferedReader		br		=	null;
-	private BufferedWriter		bw		=	null;	
-	private String				title	=	"Server";
+	private BufferedWriter		bw		=	null;
+	private String				title	=	"Client";
 	
 	public static void main(String[] args){
 		
 		/** Set LAF Style */
         try {
 	        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-	        
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}  
 
         /** new Server instance */
-        new Server();
+        new Client();
 	}
 	
-	public Server(){
+	public Client(){
 		try {
 			
 			/** Create socket for communication between apps */
-			server = new ServerSocket(port);
-			socket = server.accept();
+			socket = new Socket("localhost", port);
 			
 			/** Create IO reader/writer */
-			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			
 			/** Create GUI from above */
 			new GUI_migLayout(title, bw, br);
 			
 		} catch (IOException e) {
 			
-			setWarningMsg("Server Error. \n" +e.getMessage());
+			setWarningMsg("Hint: Run Server before client. \n" +e.getMessage());
+			
 		}
+		
 	}
 	
 	/** Pop-up error message with OK button */
@@ -63,3 +54,4 @@ public class Server {
 	}
 	
 }
+

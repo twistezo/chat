@@ -1,7 +1,8 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Image;
+import net.miginfocom.swing.MigLayout;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -13,19 +14,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import net.miginfocom.swing.MigLayout;
 
 /**
  * 
@@ -186,7 +174,7 @@ public class GUI_migLayout implements KeyListener {
 		this.isConnection = isConnection;
 		
 		if (isConnection) {
-			pictureOnOff = new ImageIcon(new ImageIcon("resources/on.png")
+			pictureOnOff = new ImageIcon(new ImageIcon("src/main/resources/on.png")
 													.getImage()
 													.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
 			
