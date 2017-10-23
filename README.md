@@ -10,5 +10,12 @@ Java, Swing, Java Socket
 - connections status
 - time of incoming message
 
+### Build/Run
+```
+mvn clean install
+cd target
+server.jar && client.jar
+```
+
 ### Screenshots
  <img src="http://i.imgur.com/5pjPdNX.png">
